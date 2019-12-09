@@ -1,0 +1,26 @@
+<mat-card>
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input matInput formControlName="email" placeholder="Email" required>
+      <mat-error>Mobile is required.</mat-error>
+    </mat-form-field>
+    <br />
+
+    <mat-form-field>
+      <input matInput formControlName="mobile" required placeholder="Mobile">
+      <mat-error>Mobile is required.</mat-error>
+    </mat-form-field>
+    <br />
+
+    <select formControlName="country">
+      <option *ngFor="let country of countries" [value]="country">{{country}}</option>
+    </select>
+    <br />
+
+    <button type="submit" [disabled]="!contactForm.valid">Save</button>
+    <button type="reset" (click)="revert()">Revert</button>
+  </form>
+  <p>
+    Form Status: {{ contactForm.status }}
+  </p> <br>
+</mat-card>
